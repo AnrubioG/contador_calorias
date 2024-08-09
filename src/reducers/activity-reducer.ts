@@ -15,10 +15,13 @@ export const initialState: ActivityState = {
 
 export const activityReducer = (
   state: ActivityState = initialState,
-  actions: ActivityActions
+  action: ActivityActions
 ) => {
-  if (actions.type === "save-activity") {
-    console.log(" desde save-activity");
+  if (action.type === "save-activity") {
+    return {
+      ...state,
+      activities: [...state.activities, action.payload.newActivity],
+    };
   }
 
   return state;
