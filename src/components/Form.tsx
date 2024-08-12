@@ -93,7 +93,6 @@ export default function Form({ dispatch, state }: FormProps) {
           type="number"
           className="border border-slate-300 rounded-lg p-2"
           placeholder="Ej. 300 o 500"
-          value={activity.calories}
           onChange={handleChange}
         />
       </div>
