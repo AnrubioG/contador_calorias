@@ -1,15 +1,12 @@
-import { useState, useEffect, ChangeEvent, FormEvent, Dispatch } from "react";
+import { useState, useEffect, ChangeEvent, FormEvent } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { categories } from "../data/categories";
 import { Activity } from "../types";
-import { ActivityActions, ActivityState } from "../reducers/activity-reducer";
+import { useActivity } from "../hooks/useActivity";
 
-type FormProps = {
-  dispatch: Dispatch<ActivityActions>;
-  state: ActivityState;
-};
+export default function Form() {
+  const { state, dispatch } = useActivity();
 
-export default function Form({ dispatch, state }: FormProps) {
   const initalState: Activity = {
     id: uuidv4(),
     category: 1,
@@ -94,6 +91,7 @@ export default function Form({ dispatch, state }: FormProps) {
           className="border border-slate-300 rounded-lg p-2"
           placeholder="Ej. 300 o 500"
           onChange={handleChange}
+          value={activity.calories}
         />
       </div>
       <input
